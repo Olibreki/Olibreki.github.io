@@ -193,7 +193,9 @@
         "Diagnosed an ONNX Runtime deployment failure caused by the Pi's memory constraints and built the runtime from source after native support proved unavailable."
       ],
       tags: ['ONNX Runtime', 'C', 'Flask', 'MTCNN', 'Raspberry Pi'],
-      link: 'https://github.com/Olibreki/face-recognition-alarm'
+      link: 'https://github.com/Olibreki/face-recognition-alarm',
+      image: 'assets/facial-recognition-pipeline.png',
+      imageAlt: 'Pipeline diagram: Camera to Python capture pipeline (Flask, Haar cascade, MTCNN) over HTTP to C inference service (ONNX Runtime, cosine similarity) to Telegram alert'
     },
     {
       title: 'NFL Prediction Model', year: '2025 – now',
@@ -265,6 +267,7 @@
         return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;color:#565b62;border:1px solid #e3e4e7;border-radius:6px;padding:5px 9px;background:#fff">' + escapeHtml(t) + '</span>';
       }).join('') + '</div>';
       var linkHtml = p.link ? '<a href="' + p.link + '" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:500">View repository →</a>' : '';
+      var imageHtml = p.image ? '<img src="' + p.image + '" alt="' + escapeHtml(p.imageAlt || p.title) + '" loading="lazy" style="max-width:100%;width:420px;height:auto;display:block;border:1px solid #e3e4e7;border-radius:10px;background:#fff">' : '';
 
       return '<div data-reveal="out" style="border-bottom:1px solid rgba(22,24,27,.09)">' +
         '<div data-row="1" data-index="' + i + '" role="button" tabindex="0" style="display:grid;grid-template-columns:minmax(0,44px) minmax(0,1fr) minmax(0,auto);gap:18px;align-items:baseline;padding:20px 10px 20px 4px;cursor:pointer;transition:background .25s ease">' +
@@ -272,7 +275,7 @@
           '<div style="min-width:0"><h3 style="font-size:1.28rem;font-weight:700;letter-spacing:-0.022em;line-height:1.2;margin:0 0 6px">' + escapeHtml(p.title) + '</h3><p style="font-size:14.5px;line-height:1.55;color:#71767d;margin:0;max-width:58ch">' + escapeHtml(p.blurb) + '</p></div>' +
           '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;color:#6f747b;white-space:nowrap">' + escapeHtml(p.year) + ' &nbsp;' + sign + '</span>' +
         '</div>' +
-        (open ? '<div style="padding:0 10px 28px 66px;display:grid;gap:20px;max-width:72ch">' + statsHtml + pointsHtml + tagsHtml + (linkHtml ? '<div>' + linkHtml + '</div>' : '') + '</div>' : '') +
+        (open ? '<div style="padding:0 10px 28px 66px;display:grid;gap:20px;max-width:72ch">' + statsHtml + imageHtml + pointsHtml + tagsHtml + (linkHtml ? '<div>' + linkHtml + '</div>' : '') + '</div>' : '') +
       '</div>';
     }).join('');
 
